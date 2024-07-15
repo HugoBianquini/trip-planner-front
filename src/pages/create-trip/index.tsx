@@ -11,8 +11,11 @@ import {
   Mail,
 } from "lucide-react";
 import { FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function CreateTripPage() {
+  const navigate = useNavigate();
+
   const [isGuestsInputOpen, setGuestsInputOpen] = useState(false);
   const [isGuestsModalOpen, setGuestsModalOpen] = useState(false);
   const [emailsToInvite, setEmailsToInvite] = useState<string[]>([]);
@@ -67,6 +70,10 @@ function CreateTripPage() {
     );
 
     setEmailsToInvite(newEmailList);
+  }
+
+  function createTrip() {
+    navigate("trips/123");
   }
 
   return (
@@ -266,6 +273,7 @@ function CreateTripPage() {
                 />
               </div>
               <button
+                onClick={createTrip}
                 type="submit"
                 className="bg-lime-300 text-lime-950 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-lime-400 w-full justify-center"
               >
